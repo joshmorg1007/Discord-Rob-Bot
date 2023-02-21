@@ -17,7 +17,7 @@ async def on_ready():
 
 @bot.command()
 async def rob(ctx, *args):
-    await synthesize_voice_clip(ctx, args[0], "jo1ygh26P6QtQ7bLPIJ3")
+    await synthesize_voice_clip(ctx, args[0], "jo1ygh26P6QtQ7bLPIJ3", "Rob")
 """
     # Sets up event to allow the bot to wait until the clip has been played before leaving
     stop_event = asyncio.Event()
@@ -56,14 +56,14 @@ async def rob(ctx, *args):
 """
 @bot.command()
 async def mattda(ctx, *args):
-    await synthesize_voice_clip(ctx, args[0], "PUooyE0VjiwElqBZHbWd")
+    await synthesize_voice_clip(ctx, args[0], "PUooyE0VjiwElqBZHbWd", "Mattda")
 
 
 @bot.command()
 async def reid(ctx, *args):
-    await synthesize_voice_clip(ctx, args[0], "DuDfDhpoomHeT2o3HYiT")
+    await synthesize_voice_clip(ctx, args[0], "DuDfDhpoomHeT2o3HYiT", "Reid")
 
-async def synthesize_voice_clip(ctx, msg, voiceID):
+async def synthesize_voice_clip(ctx, msg, voiceID, voice_owner):
     if len(msg) > 100:
         await ctx.send("Text must be less than 100 characters")
         await ctx.send(f"Current message is {len(msg)} characters")
@@ -88,7 +88,7 @@ async def synthesize_voice_clip(ctx, msg, voiceID):
 
     audio = io.BytesIO(speach)
 
-    file = discord.File(audio, filename="reid.mp3")
+    file = discord.File(audio, filename=voice_owner + ".mp3")
 
     await ctx.send(file=file)
 
