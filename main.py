@@ -108,6 +108,37 @@ async def mattda(ctx, *args):
     file = discord.File(audio, filename="mattda.mp3")
 
     await ctx.send(file=file)
+
+
+@bot.command()
+async def reid(ctx, *args):
+    if len(args[0]) > 100:
+        await ctx.send("Text must be less than 100 characters")
+        return
+        
+    url = "https://api.elevenlabs.io/v1/text-to-speech/DuDfDhpoomHeT2o3HYiT"
+    headers = {'xi-api-key': elevenLabsAPIKey}
+
+    r = requests.post(url, headers=headers, json=
+    {
+        "text": args[0],
+        "voice_settings": {
+            "stability": 0.35,
+            "similarity_boost": 0.6
+        }
+    })
+
+    r.raise_for_status()
+    assert r.headers["Content-Type"] == "audio/mpeg"
+
+    speach = r.content
+
+    audio = io.BytesIO(speach)
+
+    file = discord.File(audio, filename="reid.mp3")
+
+    await ctx.send(file=file)
+
 token = os.getenv("TOKEN")
 bot.run(token)
 #bot.run("Enter token when testing")
