@@ -64,7 +64,7 @@ async def reid(ctx, *args):
     await synthesize_voice_clip(ctx, args[0], "DuDfDhpoomHeT2o3HYiT", "Reid")
 
 async def synthesize_voice_clip(ctx, msg, voiceID, voice_owner):
-    if len(msg) > 100:
+    if len(msg) > 200:
         await ctx.send("Text must be less than 100 characters")
         await ctx.send(f"Current message is {len(msg)} characters")
         return
