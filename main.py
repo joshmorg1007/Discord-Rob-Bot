@@ -17,33 +17,7 @@ async def on_ready():
 
 @bot.command()
 async def rob(ctx, *args):
-
-    if len(args[0]) > 100:
-        await ctx.send("Text must be less than 100 characters")
-        return
-        
-    url = "https://api.elevenlabs.io/v1/text-to-speech/jo1ygh26P6QtQ7bLPIJ3"
-    headers = {'xi-api-key': elevenLabsAPIKey}
-
-    r = requests.post(url, headers=headers, json=
-    {
-        "text": args[0],
-        "voice_settings": {
-            "stability": 0.41,
-            "similarity_boost": 0.7
-        }
-    })
-
-    r.raise_for_status()
-    assert r.headers["Content-Type"] == "audio/mpeg"
-
-    speach = r.content
-
-    audio = io.BytesIO(speach)
-
-    file = discord.File(audio, filename="robin.mp3")
-
-    await ctx.send(file=file)
+    synthesize_voice_clip(ctx, *args, "jo1ygh26P6QtQ7bLPIJ3")
 """
     # Sets up event to allow the bot to wait until the clip has been played before leaving
     stop_event = asyncio.Event()
@@ -82,41 +56,19 @@ async def rob(ctx, *args):
 """
 @bot.command()
 async def mattda(ctx, *args):
-    if len(args[0]) > 100:
-        await ctx.send("Text must be less than 100 characters")
-        return
-        
-    url = "https://api.elevenlabs.io/v1/text-to-speech/PUooyE0VjiwElqBZHbWd"
-    headers = {'xi-api-key': elevenLabsAPIKey}
-
-    r = requests.post(url, headers=headers, json=
-    {
-        "text": args[0],
-        "voice_settings": {
-            "stability": 0.35,
-            "similarity_boost": 0.6
-        }
-    })
-
-    r.raise_for_status()
-    assert r.headers["Content-Type"] == "audio/mpeg"
-
-    speach = r.content
-
-    audio = io.BytesIO(speach)
-
-    file = discord.File(audio, filename="mattda.mp3")
-
-    await ctx.send(file=file)
+    synthesize_voice_clip(ctx, *args, "PUooyE0VjiwElqBZHbWd")
 
 
 @bot.command()
 async def reid(ctx, *args):
+    synthesize_voice_clip(ctx, *args, "DuDfDhpoomHeT2o3HYiT")
+
+async def synthesize_voice_clip(ctx, *args, voiceID):
     if len(args[0]) > 100:
         await ctx.send("Text must be less than 100 characters")
         return
         
-    url = "https://api.elevenlabs.io/v1/text-to-speech/DuDfDhpoomHeT2o3HYiT"
+    url = "https://api.elevenlabs.io/v1/text-to-speech/" + voiceID
     headers = {'xi-api-key': elevenLabsAPIKey}
 
     r = requests.post(url, headers=headers, json=
