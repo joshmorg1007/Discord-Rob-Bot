@@ -17,7 +17,7 @@ async def on_ready():
 
 @bot.command()
 async def rob(ctx, *args):
-    synthesize_voice_clip(ctx, args[0], "jo1ygh26P6QtQ7bLPIJ3")
+    await synthesize_voice_clip(ctx, args[0], "jo1ygh26P6QtQ7bLPIJ3")
 """
     # Sets up event to allow the bot to wait until the clip has been played before leaving
     stop_event = asyncio.Event()
@@ -56,12 +56,12 @@ async def rob(ctx, *args):
 """
 @bot.command()
 async def mattda(ctx, *args):
-    synthesize_voice_clip(ctx, args[0], "PUooyE0VjiwElqBZHbWd")
+    await synthesize_voice_clip(ctx, args[0], "PUooyE0VjiwElqBZHbWd")
 
 
 @bot.command()
 async def reid(ctx, *args):
-    synthesize_voice_clip(ctx, args[0], "DuDfDhpoomHeT2o3HYiT")
+    await synthesize_voice_clip(ctx, args[0], "DuDfDhpoomHeT2o3HYiT")
 
 async def synthesize_voice_clip(ctx, msg, voiceID):
     if len(msg) > 100:
