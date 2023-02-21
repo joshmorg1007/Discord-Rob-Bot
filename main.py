@@ -66,6 +66,7 @@ async def reid(ctx, *args):
 async def synthesize_voice_clip(ctx, *args, voiceID):
     if len(args[0]) > 100:
         await ctx.send("Text must be less than 100 characters")
+        await ctx.send(f"Current message is {len(args[0])} characters")
         return
         
     url = "https://api.elevenlabs.io/v1/text-to-speech/" + voiceID
