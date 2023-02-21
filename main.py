@@ -44,11 +44,10 @@ async def rob(ctx, *args):
     file = discord.File(audio, filename="robin.mp3")
 
     await ctx.send(file=file)
-
+"""
     # Sets up event to allow the bot to wait until the clip has been played before leaving
     stop_event = asyncio.Event()
     loop = asyncio.get_event_loop()
-
 
     def wait_for_audio(error):
         if error:
@@ -80,7 +79,7 @@ async def rob(ctx, *args):
         await voice_client.disconnect()
     else:
         await ctx.send("The bot is not connected to a voice channel.")
-
+"""
 token = os.getenv("TOKEN")
 bot.run(token)
 bot.run("Enter token when testing")
