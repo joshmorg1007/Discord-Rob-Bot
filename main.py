@@ -17,7 +17,7 @@ async def on_ready():
 
 @bot.command()
 async def rob(ctx, *args):
-    if len(args < 3):
+    if len(args) < 3:
         stab = 0.35
         boost = 0.6
     else:
@@ -62,7 +62,7 @@ async def rob(ctx, *args):
 """
 @bot.command()
 async def mattda(ctx, *args):
-    if len(args < 3):
+    if len(args) < 3:
         stab = 0.35
         boost = 0.6
     else:
@@ -73,7 +73,7 @@ async def mattda(ctx, *args):
 
 @bot.command()
 async def reid(ctx, *args):
-    if len(args < 3):
+    if len(args) < 3:
         stab = 0.35
         boost = 0.6
     else:
