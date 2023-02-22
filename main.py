@@ -62,6 +62,7 @@ async def rob(ctx, *args):
 """
 @bot.command()
 async def mattda(ctx, *args):
+    await ctx.send(str(len(args)))
     if len(args) < 3:
         stab = 0.35
         boost = 0.6
