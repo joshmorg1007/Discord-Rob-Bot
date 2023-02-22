@@ -17,6 +17,12 @@ async def on_ready():
 
 @bot.command()
 async def rob(ctx, *args):
+    if len(args < 3):
+        stab = 0.35
+        boost = 0.6
+    else:
+        stab = args[1]
+        boost = args[2]
     await synthesize_voice_clip(ctx, args[0], "jo1ygh26P6QtQ7bLPIJ3", "Rob",  args[1], args[2])
 """
     # Sets up event to allow the bot to wait until the clip has been played before leaving
@@ -56,11 +62,23 @@ async def rob(ctx, *args):
 """
 @bot.command()
 async def mattda(ctx, *args):
+    if len(args < 3):
+        stab = 0.35
+        boost = 0.6
+    else:
+        stab = args[1]
+        boost = args[2]
     await synthesize_voice_clip(ctx, args[0], "PUooyE0VjiwElqBZHbWd", "Mattda", args[1], args[2])
 
 
 @bot.command()
 async def reid(ctx, *args):
+    if len(args < 3):
+        stab = 0.35
+        boost = 0.6
+    else:
+        stab = args[1]
+        boost = args[2]
     await synthesize_voice_clip(ctx, args[0], "DuDfDhpoomHeT2o3HYiT", "Reid", args[1], args[2])
 
 async def synthesize_voice_clip(ctx, msg, voiceID, voice_owner, stability=0.35, similarity_boost=0.6):
