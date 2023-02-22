@@ -64,17 +64,21 @@ async def reid(ctx, *args):
     await synthesize_voice_clip(ctx, args[0], "DuDfDhpoomHeT2o3HYiT", "Reid", args[1], args[2])
 
 async def synthesize_voice_clip(ctx, msg, voiceID, voice_owner, stability=0.35, similarity_boost=0.6):
-    if not stability.isfloat():
+    try:
+        stability = float(stability)
+    except:
         stability = 0.35
+
+    try:
+        similarity_boost = float(similarity_boost)
+    except:
+        similarity_boost = 0.35
 
     if float(stability) < 0.0 or float(stability) > 1.0:
         await ctx.send("Stability Must be a float from 0.0 to 1.0")
 
     if float(similarity_boost) < 0.0 or float(similarity_boost) > 1.0:
         await ctx.send("similarity_boost Must be a float from 0.0 to 1.0")
-    
-    if not similarity_boost.isfloat():
-        similarity_boost = 0.35
 
     if len(msg) > 200:
         await ctx.send("Text must be less than 200 characters")
